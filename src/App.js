@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import db from "./firebase.config";
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const response = db.collection("User_data");
+    let dataVal = await response.get();
+
+    console.log("Dataval is ", dataVal.docs);
+
+    dataVal &&
+      dataVal.docs.forEach((x) => {
+        setData([...data, x.data()]);
+      });
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Hello World should work</p>
+      {data.map((x, i) => {
+        console.log("X is ", data);
+        return (
+          <div key={x.Name}>
+            <div>Name: {x.Name}</div>
+            <div>
+              <img src={x.Image} alt="person-im" />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
