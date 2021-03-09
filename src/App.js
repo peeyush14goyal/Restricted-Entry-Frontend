@@ -5,16 +5,35 @@ import "./App.css";
 function App() {
   const [data, setData] = useState([]);
 
+  var dateVal = "2021-03-08";
+
   const fetchData = async () => {
-    const response = db.collection("User_data");
+    const response = db
+      .collection("User_data")
+      .doc(dateVal)
+      .collection("Authorised");
+
+    // let dataVal = await response.get().then((val) => {
+    //   console.log("val is ", val);
+    //   val.forEach((docVal) => {
+    //     console.log("id is ", docVal.collection("Authorised").docs[0].data());
+    //   });
+    // });
     let dataVal = await response.get();
 
-    console.log("Dataval is ", dataVal.docs);
+    console.log("DataVal is ", dataVal);
+
+    let data_array = [];
+
+    console.log("DataVal is ", dataVal);
 
     dataVal &&
       dataVal.docs.forEach((x) => {
-        setData([...data, x.data()]);
+        console.log("Render x is ", x);
+        data_array = [...data_array, x.data()];
       });
+
+    data_array && setData(data_array);
   };
   useEffect(() => {
     fetchData();
@@ -24,7 +43,6 @@ function App() {
     <div>
       <p>Hello World should work</p>
       {data.map((x, i) => {
-        console.log("X is ", data);
         return (
           <div key={x.Name}>
             <div>Name: {x.Name}</div>
