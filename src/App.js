@@ -8,10 +8,7 @@ function App() {
   var dateVal = "2021-03-08";
 
   const fetchData = async () => {
-    const response = db
-      .collection("User_data")
-      .doc(dateVal)
-      .collection("Authorised");
+    const response = db.collection("User_Data");
 
     // let dataVal = await response.get().then((val) => {
     //   console.log("val is ", val);
@@ -21,11 +18,7 @@ function App() {
     // });
     let dataVal = await response.get();
 
-    console.log("DataVal is ", dataVal);
-
     let data_array = [];
-
-    console.log("DataVal is ", dataVal);
 
     dataVal &&
       dataVal.docs.forEach((x) => {
