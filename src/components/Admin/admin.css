@@ -27,7 +27,7 @@ button {
   padding: 20px;
   margin: 0 auto;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   display: flex;
   border-radius: 40px;
   cursor: pointer;
@@ -38,7 +38,7 @@ button {
   background-color: rgb(76, 76, 236);
 }
 .lockIcon {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 .inputField {
   font-size: 25px;
