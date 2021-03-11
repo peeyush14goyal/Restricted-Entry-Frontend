@@ -8,10 +8,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/home">
+        <Route exact path="/home">
           <AdminHome />
         </Route>
-        <Route path="/">
+
+        <Route exact path="/">
           <AdminLogin />
         </Route>
       </Switch>

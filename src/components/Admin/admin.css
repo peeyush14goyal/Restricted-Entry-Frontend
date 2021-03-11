@@ -1,0 +1,98 @@
+.loginPage {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 10%;
+  text-align: center;
+  font-size: 25px;
+}
+/* input {
+  text-align: center;
+  height: 25px;
+  font-size: 25px;
+  padding: 5px;
+}*/
+.credential {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+table {
+  margin-top: 40px;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+}
+
+button {
+  font-size: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  border: none;
+  color: white;
+  background-color: rgb(76, 76, 236);
+}
+.lockIcon {
+  margin-right: 15px;
+}
+.inputField {
+  font-size: 25px;
+}
+.home__cardDisplay {
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+}
+
+.home__userDetails {
+  background-color: rgb(48, 161, 189);
+  color: white;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.home__userImg {
+  height: 200px;
+  max-width: 150px;
+}
+
+.home__userPersonalDetails {
+  display: flex;
+  padding: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+.home__userImgDiv {
+  width: 40%;
+  text-align: center;
+}
+.home__userTextDetails {
+  padding-top: 2%;
+}
+
+/* .home__Title {
+  font-size: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: rgb(8, 100, 161);
+} */
+.gap {
+  margin-left: 10px;
+}
