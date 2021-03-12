@@ -21,7 +21,6 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Row, Col, Image } from "reactstrap";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -64,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  shadowCss: {
+    boxShadow: "0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)",
+  },
+  spaceLeft: {
+    marginLeft: "50%",
+  },
 }));
 
 let AdminHome = () => {
@@ -94,8 +99,12 @@ let AdminHome = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  let d = new Date();
+  let month = d.getMonth();
+  let year = d.getFullYear();
   return (
-    <div style={{ backgroundColor: "grey" }}>
+    <div>
       <div className="home__Title">
         <AppBar position="static">
           <Toolbar>
@@ -117,17 +126,20 @@ let AdminHome = () => {
         </AppBar>
       </div>
       <div className="row">
+        <div className="col-12">
+          <h1>User Data</h1>
+        </div>
+      </div>
+      <div className="row">
         <div className="col-10 offset-1">
           {data.map((x, i) => {
             console.log(x.Time);
             return (
-              <div
-                key={x.User_ID}
-                className="home__userDetailsBack col-8 offset-2 mt-5 mb-5"
-              >
+              <div key={x.User_ID} className="col-8 offset-2 mt-4 mb-4">
                 <Accordion
                   expanded={expanded === `panel${i + 1}`}
                   onChange={handleChange(`panel${i + 1}`)}
+                  className={classes.shadowCss}
                 >
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -137,9 +149,13 @@ let AdminHome = () => {
                     <Typography className={classes.heading}>
                       {x.Name}
                     </Typography>
-                    <Typography
-                      className={classes.secondaryHeading}
-                    ></Typography>
+                    <Typography className={classes.secondaryHeading}>
+                      {x.User_ID}
+                    </Typography>
+                    <Typography className={classes.spaceLeft}>
+                      {x.Time.length / 2} /{" "}
+                      {new Date(year, month + 1, 0).getDate() - 4}
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <div className="row">
