@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import AdminLogin from "./components/Admin/login";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AdminHome from "./components/Admin/home";

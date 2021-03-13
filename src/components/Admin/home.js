@@ -21,6 +21,8 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
+import * as d3 from "d3";
+import PieSVG from "./charts/PieSVG";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -96,8 +98,26 @@ let AdminHome = () => {
 
     data_array && setData(data_array);
   };
+
+  let values = [];
+
+  let [pie, setPie] = useState([]);
+
+  const attendanceData = () => {
+    if (data) {
+      data.forEach((x, i) => {
+        values = [...values, { date: i, value: x.Time.length / 2 }];
+        console.log(values);
+      });
+
+      if (data.length === values.length) {
+        setPie(values);
+      }
+    }
+  };
   useEffect(() => {
     fetchData();
+    attendanceData();
   }, []);
 
   let d = new Date();
@@ -126,14 +146,26 @@ let AdminHome = () => {
         </AppBar>
       </div>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 text-center mt-2">
           <h1>User Data</h1>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 text-center mt-2">
+          {pie && (
+            <PieSVG
+              data={pie}
+              width={200}
+              height={200}
+              innerRadius={60}
+              outerRadius={100}
+            />
+          )}
         </div>
       </div>
       <div className="row">
         <div className="col-10 offset-1">
           {data.map((x, i) => {
-            console.log(x.Time);
             return (
               <div key={x.User_ID} className="col-8 offset-2 mt-4 mb-4">
                 <Accordion
