@@ -22,7 +22,6 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CanvasJSReact from "../../canvasJs/canvasjs.react";
-import { SettingsApplicationsRounded } from "@material-ui/icons";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
