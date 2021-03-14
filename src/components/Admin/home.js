@@ -21,8 +21,10 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
-import * as d3 from "d3";
-import PieSVG from "./charts/PieSVG";
+import CanvasJSReact from "../../canvasJs/canvasjs.react";
+import { SettingsApplicationsRounded } from "@material-ui/icons";
+var CanvasJS = CanvasJSReact.CanvasJS;
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -75,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
 
 let AdminHome = () => {
   const [data, setData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [options, setOptions] = useState({ data: [] });
+  let values = [];
 
   const classes = useStyles();
 
@@ -97,27 +102,27 @@ let AdminHome = () => {
       });
 
     data_array && setData(data_array);
+
+    data_array.forEach((x, i) => {
+      values = [...values, { label: x.Name, y: x.Time.length / 2 }];
+    });
+
+    setOptions({
+      title: {
+        text: "Attendance",
+      },
+      data: [
+        {
+          type: "column",
+          dataPoints: values,
+        },
+      ],
+    });
+    setLoaded(true);
   };
 
-  let values = [];
-
-  let [pie, setPie] = useState([]);
-
-  const attendanceData = () => {
-    if (data) {
-      data.forEach((x, i) => {
-        values = [...values, { date: i, value: x.Time.length / 2 }];
-        console.log(values);
-      });
-
-      if (data.length === values.length) {
-        setPie(values);
-      }
-    }
-  };
   useEffect(() => {
     fetchData();
-    attendanceData();
   }, []);
 
   let d = new Date();
@@ -145,24 +150,18 @@ let AdminHome = () => {
           </Toolbar>
         </AppBar>
       </div>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-12 text-center mt-2">
           <h1>User Data</h1>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12 text-center mt-2">
-          {pie && (
-            <PieSVG
-              data={pie}
-              width={200}
-              height={200}
-              innerRadius={60}
-              outerRadius={100}
-            />
-          )}
+      </div> */}
+      {loaded && options.data.length > 0 && (
+        <div className="row">
+          <div className="col-6 text-center mt-4 offset-3">
+            <CanvasJSChart options={options} />
+          </div>
         </div>
-      </div>
+      )}
       <div className="row">
         <div className="col-10 offset-1">
           {data.map((x, i) => {
@@ -185,7 +184,7 @@ let AdminHome = () => {
                       {x.User_ID}
                     </Typography>
                     <Typography className={classes.spaceLeft}>
-                      {x.Time.length / 2} /{" "}
+                      {x.Time.length / 2} /
                       {new Date(year, month + 1, 0).getDate() - 4}
                     </Typography>
                   </AccordionSummary>
