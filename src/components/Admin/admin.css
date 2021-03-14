@@ -25,8 +25,8 @@ table {
 button {
   font-size: 20px;
   padding: 20px;
-  margin: 0 auto;
-  padding-top: 15px;
+  margin-left: 50%;
+  padding-top: 13px;
   padding-bottom: 10px;
   display: flex;
   border-radius: 40px;
@@ -35,10 +35,14 @@ button {
   font-weight: bold;
   border: none;
   color: white;
-  background-color: rgb(76, 76, 236);
+  background-color: #7761ea;
+}
+button:hover {
+  background-color: #674bf3;
 }
 .lockIcon {
   margin-right: 10px;
+  margin-top: 4px;
 }
 .inputField {
   font-size: 25px;
@@ -113,4 +117,24 @@ button {
 
 .row {
   width: 100%;
+}
+
+.bg-primary {
+  background-color: #221f30;
+}
+
+.MuiInputLabel-root {
+  color: white !important;
+  outline-color: white !important;
+  border-color: white;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: rgb(114, 110, 110) !important;
+}
+.buttonDiv {
+  max-width: 150px;
+  margin: 0 auto;
+}
+.buttonComp {
+  border-radius: 20px;
 }

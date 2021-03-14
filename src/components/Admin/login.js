@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
+import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import "./admin.css";
 import AppBar from "@material-ui/core/AppBar";
@@ -11,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    color: "white",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -18,6 +20,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     textAlign: "center",
     flexGrow: 1,
+  },
+  txtColor: {
+    color: "white",
+  },
+  bgColor: {
+    backgroundColor: "#302d40",
   },
 }));
 
@@ -41,7 +49,7 @@ let AdminLogin = () => {
     <div>
       <div>
         <div className="home__Title">
-          <AppBar position="static">
+          <AppBar position="static" className={classes.bgColor}>
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
                 Welcome to Secure Management
@@ -62,6 +70,18 @@ let AdminLogin = () => {
               inputProps={{ style: { fontSize: 25 } }}
               value={user}
               onBlur={(e) => setUser(e.target.value)}
+              className={classes.root}
+              InputLabelProps={{
+                classes: {
+                  txtColor: classes.txtColor,
+                },
+              }}
+              InputProps={{
+                classes: {
+                  root: classes.root,
+                  txtColor: classes.txtColor,
+                },
+              }}
             />
           </div>
           <div>
@@ -74,10 +94,22 @@ let AdminLogin = () => {
               inputProps={{ style: { fontSize: 25 } }}
               value={pass}
               onBlur={(e) => setPass(e.target.value)}
+              className={classes.root}
+              InputLabelProps={{
+                classes: {
+                  txtColor: classes.txtColor,
+                },
+              }}
+              InputProps={{
+                classes: {
+                  root: classes.root,
+                  txtColor: classes.txtColor,
+                },
+              }}
             />
           </div>
-          <div>
-            <button type="submit">
+          <div className="buttonDiv">
+            <button type="submit" className="buttonComp">
               <div className="lockIcon">
                 <LockOpenIcon />
               </div>
@@ -90,4 +122,4 @@ let AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default withStyles(useStyles)(AdminLogin);

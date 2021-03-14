@@ -25,9 +25,16 @@ import CanvasJSReact from "../../canvasJs/canvasjs.react";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
+CanvasJS.addColorSet("customColorSet1", [
+  //colorSet Array
+  "#7524d8",
+  "#36aeed",
+  "#eb98cc",
+]);
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.info.dark,
+    backgroundColor: "#7761ea",
     color: theme.palette.common.white,
   },
   body: {
@@ -64,13 +71,21 @@ const useStyles = makeStyles((theme) => ({
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
+    color: "white",
   },
   shadowCss: {
     boxShadow: "0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)",
+    backgroundColor: "#2e2b3e",
+    color: "white",
   },
   spaceLeft: {
     marginLeft: "50%",
+  },
+  bgColor: {
+    backgroundColor: "#302d40",
+  },
+  txtColor: {
+    color: "white",
   },
 }));
 
@@ -107,8 +122,19 @@ let AdminHome = () => {
     });
 
     setOptions({
+      backgroundColor: "#2e2b3e",
+
+      colorSet: "customColorSet1",
+      axisX: {
+        labelFontColor: "white",
+      },
+      axisY: {
+        labelFontColor: "white",
+      },
       title: {
         text: "Attendance",
+        fontColor: "white",
+        fontFamily: "Arial",
       },
       data: [
         {
@@ -130,7 +156,7 @@ let AdminHome = () => {
   return (
     <div>
       <div className="home__Title">
-        <AppBar position="static">
+        <AppBar position="static" className={classes.bgColor}>
           <Toolbar>
             <IconButton
               edge="start"
@@ -172,7 +198,7 @@ let AdminHome = () => {
                   className={classes.shadowCss}
                 >
                   <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon className={classes.txtColor} />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                   >
