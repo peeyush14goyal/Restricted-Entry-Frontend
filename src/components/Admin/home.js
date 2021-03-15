@@ -67,6 +67,10 @@ const useStyles = makeStyles((theme) => ({
     flexBasis: "33.33%",
     flexShrink: 0,
   },
+  primaryHeading: {
+    width: "90%",
+    margin: "0 auto",
+  },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: "white",
@@ -196,6 +200,7 @@ let AdminHome = () => {
                     expandIcon={<ExpandMoreIcon className={classes.txtColor} />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
+                    className={classes.primaryHeading}
                   >
                     <Typography className={classes.heading}>
                       {x.Name}
@@ -204,13 +209,14 @@ let AdminHome = () => {
                       {x.User_ID}
                     </Typography>
                     <Typography className={classes.spaceLeft}>
-                      {x.Time.length / 2} /{" "}
-                      {new Date(year, month + 1, 0).getDate() - 4}
+                      {x.Time.length / 2 > 1
+                        ? x.Time.length / 2 + " days"
+                        : x.Time.length / 2 + " day"}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <div className="row">
-                      <div className="col-4">
+                      <div className="col-4 home__userImgDiv">
                         <img
                           src={x.Image}
                           alt="person-im"
@@ -219,6 +225,10 @@ let AdminHome = () => {
                       </div>
 
                       <div className="col-8">
+                        <div className="registerTitle">
+                          <text className="registerColor">Registered On:</text>{" "}
+                          <b>{x.Date}</b>
+                        </div>
                         <TableContainer component={Paper}>
                           <Table
                             className={classes.table}
