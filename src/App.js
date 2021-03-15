@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import AdminLogin from "./components/Admin/login";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 import AdminHome from "./components/Admin/home";

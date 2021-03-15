@@ -6,7 +6,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import PersonIcon from "@material-ui/icons/Person";
 import Table from "@material-ui/core/Table";
@@ -52,7 +51,6 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // flexGrow: 1,
     width: "100%",
   },
   menuButton: {
@@ -100,6 +98,7 @@ let AdminHome = () => {
 
   const [expanded, setExpanded] = React.useState(false);
 
+  // Accordion automatic close
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -166,9 +165,7 @@ let AdminHome = () => {
               className={classes.menuButton}
               color="inherit"
               aria-label="menu"
-            >
-              {/* <MenuIcon /> */}
-            </IconButton>
+            ></IconButton>
             <Typography variant="h6" className={classes.title}>
               Dashboard
             </Typography>

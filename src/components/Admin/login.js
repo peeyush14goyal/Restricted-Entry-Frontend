@@ -30,25 +30,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let AdminLogin = (props) => {
+// Login Page for Admin
+let AdminLogin = () => {
   let history = useHistory();
   let [user, setUser] = useState();
   let [pass, setPass] = useState();
-  const [cookies, setCookie] = useCookies();
+  const [, setCookie] = useCookies();
 
   const classes = useStyles();
 
+  // Currently hardcoded user and password for later stages adding this to database
+  // After Login check the credentials of user
   let checkCredentials = () => {
     if (user === "admin" && pass === "admin") {
-      // <Redirect to="/home" />;
       history.push("/home");
-
-      // var d = new Date();
-      // d.setTime(d.getTime() + 1 * 60);
-      // var expires = "expires=" + d.toUTCString();
       setCookie("user", `${user}`);
       setCookie("password", `${pass}`);
-      //props.checkAuthentication();
     } else {
       history.push("/");
     }
