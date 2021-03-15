@@ -8,6 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { useCookies } from "react-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,10 +30,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let AdminLogin = () => {
+let AdminLogin = (props) => {
   let history = useHistory();
   let [user, setUser] = useState();
   let [pass, setPass] = useState();
+  const [cookies, setCookie] = useCookies();
 
   const classes = useStyles();
 
@@ -40,8 +42,14 @@ let AdminLogin = () => {
     if (user === "admin" && pass === "admin") {
       // <Redirect to="/home" />;
       history.push("/home");
+
+      // var d = new Date();
+      // d.setTime(d.getTime() + 1 * 60);
+      // var expires = "expires=" + d.toUTCString();
+      setCookie("user", `${user}`);
+      setCookie("password", `${pass}`);
+      //props.checkAuthentication();
     } else {
-      //<Redirect to="/" />;
       history.push("/");
     }
   };

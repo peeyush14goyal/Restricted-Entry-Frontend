@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// Home page for admin
 let AdminHome = () => {
   const [data, setData] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -103,6 +104,7 @@ let AdminHome = () => {
     setExpanded(isExpanded ? panel : false);
   };
 
+  // get data from firestore
   const fetchData = async () => {
     const response = db.collection("User_Data");
 
@@ -121,6 +123,7 @@ let AdminHome = () => {
       values = [...values, { label: x.Name, y: x.Time.length / 2 }];
     });
 
+    // config for chart
     setOptions({
       backgroundColor: "#2e2b3e",
 
@@ -132,7 +135,7 @@ let AdminHome = () => {
         labelFontColor: "white",
       },
       title: {
-        text: "Attendance",
+        text: "CheckIn - CheckOut",
         fontColor: "white",
         fontFamily: "Arial",
       },
@@ -164,7 +167,7 @@ let AdminHome = () => {
               color="inherit"
               aria-label="menu"
             >
-              <MenuIcon />
+              {/* <MenuIcon /> */}
             </IconButton>
             <Typography variant="h6" className={classes.title}>
               Dashboard
@@ -175,11 +178,6 @@ let AdminHome = () => {
           </Toolbar>
         </AppBar>
       </div>
-      {/* <div className="row">
-        <div className="col-12 text-center mt-2">
-          <h1>User Data</h1>
-        </div>
-      </div> */}
       {loaded && options.data.length > 0 && (
         <div className="row">
           <div className="col-6 text-center mt-4 offset-3">
@@ -209,7 +207,7 @@ let AdminHome = () => {
                       {x.User_ID}
                     </Typography>
                     <Typography className={classes.spaceLeft}>
-                      {x.Time.length / 2} /
+                      {x.Time.length / 2} /{" "}
                       {new Date(year, month + 1, 0).getDate() - 4}
                     </Typography>
                   </AccordionSummary>
@@ -255,7 +253,9 @@ let AdminHome = () => {
                                         {time.substr(11)}
                                       </StyledTableCell>
                                       <StyledTableCell align="right">
-                                        {x.Time[i + 1].substr(11)}
+                                        {x.Time[i + 1]
+                                          ? x.Time[i + 1].substr(11)
+                                          : "Not Checked out yet"}
                                       </StyledTableCell>
                                     </StyledTableRow>
                                   );
