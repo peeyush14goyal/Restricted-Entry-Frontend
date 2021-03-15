@@ -19,6 +19,10 @@ Password: **admin**
 React v17,
 Firestore (Database)
 
+## For Local System
+
+You can run `npm install` or `yarn install` for installing dependencies
+
 ## Available Scripts
 
 In the project directory, you can run:
