@@ -1,6 +1,23 @@
-# Getting Started with Create React App
+# Facial Recognition Based Entry
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this project, we have created the frontend of our project Facial Recognition based Entry
+
+We have a Dashboard for Admin to see the records of users that are recognized by the system and stored in the database. For access the admin will have to login into
+the application using credentials mentioned below. Currently we have hardcoded the User and Password in the code. We will be adding this to database in next iteration.
+
+#### What can Admin see?
+
+Admin can see chart and details of various recognized person
+
+#### Credentials
+
+Username: **admin**
+Password: **admin**
+
+### Stack
+
+React v17
+Firestore (Database)
 
 ## Available Scripts
 
