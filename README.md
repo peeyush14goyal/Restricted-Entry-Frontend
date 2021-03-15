@@ -16,7 +16,7 @@ Password: **admin**
 
 ### Stack
 
-React v17
+React v17,
 Firestore (Database)
 
 ## Available Scripts
