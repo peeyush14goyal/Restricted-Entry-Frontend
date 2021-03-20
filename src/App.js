@@ -1,12 +1,12 @@
 import React from "react";
-import AdminLogin from "./components/Admin/login";
+import AdminLogin from "./Pages/Login";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import AdminHome from "./components/Admin/home";
+import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
 
 function App() {
