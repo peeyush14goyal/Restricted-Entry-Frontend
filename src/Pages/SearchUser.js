@@ -34,6 +34,8 @@ const SearchUser = () => {
     };
     listofUsers();
   }, []);
+
+  // Add UI for showing user details
   return (
     <div>
       <Header name="ADMIN" />
