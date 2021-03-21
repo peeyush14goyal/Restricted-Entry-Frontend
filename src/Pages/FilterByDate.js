@@ -7,7 +7,6 @@ import Header from "../components/Header/Header";
 import Accordions from "../components/Accordion/Accordion";
 import { getChartValues } from "../data/API";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
 import "./admin.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,6 +56,7 @@ const FilterByDate = () => {
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    setNotFound(false);
   };
 
   const getDetails = (e) => {
@@ -106,9 +106,14 @@ const FilterByDate = () => {
         </>
       ) : (
         <div>
-          {!initialRender && (
+          {!initialRender && !dataNotFound && (
             <div className={classes.progress + " progressDiv"}>
               <CircularProgress color="secondary" />
+            </div>
+          )}
+          {dataNotFound && (
+            <div className="noDataFound">
+              <h1>No Data Available for {selectedDate}</h1>
             </div>
           )}
         </div>

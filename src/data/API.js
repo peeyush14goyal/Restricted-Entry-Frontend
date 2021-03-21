@@ -33,3 +33,14 @@ export const getChartValues = (data_array) => {
   });
   return values;
 };
+
+export const getOneUserData = async (id) => {
+  let data;
+  const data_array = await getUserData();
+  data_array.forEach((x) => {
+    if (x.User_ID === id) {
+      data = x;
+    }
+  });
+  return data;
+};
