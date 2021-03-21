@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   primaryHeading: {
-    width: "90%",
+    width: "100%",
     margin: "0 auto",
   },
   secondaryHeading: {
@@ -79,7 +79,7 @@ const Accordions = ({ data }) => {
                   <div className="col-4 home__userImgDiv">
                     <img
                       src={x.Image}
-                      alt="person-im"
+                      alt="NOT AVAILABLE"
                       className="home__userImg"
                     />
                   </div>

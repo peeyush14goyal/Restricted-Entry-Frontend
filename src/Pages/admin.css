@@ -131,3 +131,35 @@ button:hover {
 .registerColor {
   color: rgb(240, 142, 240);
 }
+
+.MuiInputBase-input {
+  color: white !important;
+  outline-color: white !important;
+  border-color: white !important;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid white !important;
+}
+
+.MuiInput-underline:before {
+  border-bottom: 1px solid rgb(204, 198, 198) !important;
+}
+
+.filterByDate {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.submitBtn {
+  margin-left: 20px;
+}
+.progressDiv {
+  width: 100px;
+  margin: 0 auto;
+}

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
+import FilterByDate from "./Pages/FilterByDate";
 
 function App() {
   const [cookies] = useCookies();
@@ -18,6 +19,13 @@ function App() {
         <Route exact path="/home">
           {cookies.user && cookies.password ? (
             <AdminHome />
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route exact path="/filterbydate">
+          {cookies.user && cookies.password ? (
+            <FilterByDate />
           ) : (
             <Redirect to="/" />
           )}
