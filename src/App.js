@@ -1,13 +1,15 @@
 import React from "react";
-import AdminLogin from "./components/Admin/login";
+import AdminLogin from "./Pages/Login";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import AdminHome from "./components/Admin/home";
+import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
+import FilterByDate from "./Pages/FilterByDate";
+import SearchUser from "./Pages/SearchUser";
 
 function App() {
   const [cookies] = useCookies();
@@ -18,6 +20,20 @@ function App() {
         <Route exact path="/home">
           {cookies.user && cookies.password ? (
             <AdminHome />
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route exact path="/filterbydate">
+          {cookies.user && cookies.password ? (
+            <FilterByDate />
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route exact path="/searchuser">
+          {cookies.user && cookies.password ? (
+            <SearchUser />
           ) : (
             <Redirect to="/" />
           )}
