@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   spaceLeft: {
-    marginLeft: "50%",
+    marginLeft: "40%",
   },
   txtColor: {
     color: "white",
