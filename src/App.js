@@ -10,7 +10,6 @@ import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
 import FilterByDate from "./Pages/FilterByDate";
 import SearchUser from "./Pages/SearchUser";
-import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   const [cookies] = useCookies();
@@ -25,13 +24,13 @@ function App() {
             <Redirect to="/" />
           )}
         </Route>
-        <Route exact path="/sidebar">
+        {/* <Route exact path="/sidebar">
           {cookies.user && cookies.password ? (
             <Sidebar />
           ) : (
             <Redirect to="/" />
           )}
-        </Route>
+        </Route> */}
         <Route exact path="/filterbydate">
           {cookies.user && cookies.password ? (
             <FilterByDate />
