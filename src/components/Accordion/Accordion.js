@@ -70,8 +70,8 @@ const Accordions = ({ data }) => {
                 </Typography>
                 <Typography className={classes.spaceLeft}>
                   {x.Time.length / 2 > 1
-                    ? x.Time.length / 2 + " days"
-                    : x.Time.length / 2 + " day"}
+                    ? x.Time.length / 2 + " visits"
+                    : x.Time.length / 2 + " visit"}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>

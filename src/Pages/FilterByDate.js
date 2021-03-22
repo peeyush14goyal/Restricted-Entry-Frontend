@@ -35,7 +35,7 @@ const FilterByDate = () => {
   const classes = useStyles();
 
   const [selectedDate, setSelectedDate] = useState(
-    new Date("2014-08-18T21:11:54")
+    new Date("2014-08-18")
   );
 
   const [data, setData] = useState();
@@ -80,7 +80,6 @@ const FilterByDate = () => {
             type="date"
             value={selectedDate}
             onChange={(e) => handleDateChange(e.currentTarget.value)}
-            defaultValue="2017-05-24"
             className={classes.textField}
             InputLabelProps={{
               shrink: true,
