@@ -72,7 +72,7 @@ const Header = ({ name }) => {
         }
         open={toggle}
         onSetOpen={() => onSetSidebarOpen()}
-        styles={{ sidebar: { background: "#302d40", color: "white" } }}
+        styles={{ root : {maxWidth: "40%"}, sidebar: { background: "#302d40", color: "white" } }}
       >
         <button onClick = {() => onSetSidebarOpen(true)} className = "menubutton">
           <MenuIcon />
