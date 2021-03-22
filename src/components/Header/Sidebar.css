@@ -1,7 +1,33 @@
-.heading {
-  margin-top: 10%;
-  margin-left: 10%;
+.heading1 {
+  margin-top: 25%;
 }
+
+.heading1:hover {
+  border-right: 3px solid white;
+}
+
+.heading2 {
+  margin-top: 25%;
+}
+
+
+.heading2:hover {
+  border-right: 3px solid white;
+}
+
 .sideBarDiv {
   cursor: pointer !important;
+}
+
+.menubutton {
+  background-color: #302d40;
+  padding : 22px;
+}
+
+.menubutton:hover {
+  background-color: #35324b;
+}
+
+.activeroute {
+  background-color: black;
 }
