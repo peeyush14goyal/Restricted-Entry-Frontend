@@ -8,8 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import PersonIcon from "@material-ui/icons/Person";
 import MenuIcon from "@material-ui/icons/Menu";
 import Sidebar from "react-sidebar";
-import bg2 from "./assets/bg3.png";
+import bg from "./assets/bg4.png";
 import "./Sidebar.css";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -18,10 +19,23 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textAlign: "center",
   },
 
   bgColor: {
     backgroundColor: "#302d40",
+  },
+  headu1: {
+    borderLeft: "3px solid white",
+    padding: "10%",
+  },
+  head2: {
+    textDecoration: "none",
+    padding: "10%"
+  },
+  headu2: {
+    borderLeft: "3px solid white",
+    padding: "10%",
   },
 }));
 
@@ -35,16 +49,6 @@ const Header = ({ name }) => {
     <div className="home__Title">
       <AppBar position="static" className={classes.bgColor}>
         <Toolbar>
-          <div onClick={() => setToggle(true)} className="sideBarDiv">
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="menu"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
           <Typography variant="h6" className={classes.title}>
             Dashboard
           </Typography>
@@ -53,18 +57,28 @@ const Header = ({ name }) => {
           </Button>
         </Toolbar>
       </AppBar>
+     
       <Sidebar
         sidebar={
           <div>
-            <img src={bg2} alt="menu-btn"></img>
-            <div className="heading">Filter By Date</div>
-            <div className="heading">Filter By User Id</div>
+            <img src={bg} alt="menu-btn"></img>
+            <div className="heading1">
+              <NavLink to = "/filterbydate" style={{ textDecoration: 'none', color: 'white', padding: "10%"}} activeClassName = {classes.headu1}>Filter By Date</NavLink>
+            </div>
+            <div className="heading2">
+              <NavLink to = "/home" style={{ textDecoration: 'none', color: 'white', padding: "10%" }} activeClassName = {classes.headu2}>Filter By User Id</NavLink>
+            </div>
           </div>
         }
         open={toggle}
         onSetOpen={() => onSetSidebarOpen()}
         styles={{ sidebar: { background: "#302d40", color: "white" } }}
-      ></Sidebar>
+      >
+        <button onClick = {() => onSetSidebarOpen(true)} className = "menubutton">
+          <MenuIcon />
+        </button>
+
+      </Sidebar>
     </div>
   );
 };
