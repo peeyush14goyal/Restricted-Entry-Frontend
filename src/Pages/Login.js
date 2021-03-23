@@ -9,6 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useCookies } from "react-cookie";
+import { verifyAdmin } from "../data/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,10 +43,10 @@ let AdminLogin = () => {
   // Currently hardcoded user and password for later stages adding this to database
   // After Login check the credentials of user
   let checkCredentials = () => {
-    if (user === "admin" && pass === "admin") {
+    if (verifyAdmin(user, pass)) {
       history.push("/home");
-      setCookie("user", `${user}`);
-      setCookie("password", `${pass}`);
+      setCookie("user", `${user}`, { maxAge: 3600 });
+      setCookie("password", `${pass}`, { maxAge: 3600 });
     } else {
       history.push("/");
     }

@@ -44,3 +44,14 @@ export const getOneUserData = async (id) => {
   });
   return data;
 };
+
+export const verifyAdmin = async (user, pass) => {
+  let response = db.collection("admin").doc("values");
+  let dataVal = await response.get();
+  let credentials = dataVal.data();
+
+  if (credentials.username === user && credentials.password === pass) {
+    return true;
+  }
+  return false;
+};

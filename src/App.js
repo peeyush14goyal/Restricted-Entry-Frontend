@@ -24,13 +24,7 @@ function App() {
             <Redirect to="/" />
           )}
         </Route>
-        {/* <Route exact path="/sidebar">
-          {cookies.user && cookies.password ? (
-            <Sidebar />
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Route> */}
+
         <Route exact path="/filterbydate">
           {cookies.user && cookies.password ? (
             <FilterByDate />

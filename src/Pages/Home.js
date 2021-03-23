@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ColumnChart from "../components/Chart/ColumnChart";
 import Header from "../components/Header/Header";
 import Accordions from "../components/Accordion/Accordion";
-import { getChartValues, getUserData } from "../data/API";
+import { getChartValues, getUserData, verifyAdmin } from "../data/API";
 
 // Home page for admin
 let AdminHome = () => {
@@ -18,6 +18,7 @@ let AdminHome = () => {
 
   useEffect(() => {
     fetchData();
+    verifyAdmin("admin", "admin");
   }, []);
 
   return (
