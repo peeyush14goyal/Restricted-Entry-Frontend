@@ -1,17 +1,8 @@
-.heading1 {
+.heading {
   margin-top: 25%;
 }
 
-.heading1:hover {
-  border-right: 3px solid white;
-}
-
-.heading2 {
-  margin-top: 25%;
-}
-
-
-.heading2:hover {
+.heading:hover {
   border-right: 3px solid white;
 }
 
