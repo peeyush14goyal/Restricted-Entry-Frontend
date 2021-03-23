@@ -40,7 +40,6 @@ let AdminLogin = () => {
 
   const classes = useStyles();
 
-  // Currently hardcoded user and password for later stages adding this to database
   // After Login check the credentials of user
   let checkCredentials = () => {
     if (verifyAdmin(user, pass)) {
@@ -65,7 +64,7 @@ let AdminLogin = () => {
         </div>
       </div>
       <div className="loginPage">
-        <form className="credential" onSubmit={checkCredentials}>
+        <form className="credential" onSubmit={checkCredentials} autoComplete="off">
           <div>
             <TextField
               id="outlined-search"

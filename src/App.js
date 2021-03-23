@@ -11,6 +11,7 @@ import { useCookies } from "react-cookie";
 import FilterByDate from "./Pages/FilterByDate";
 import SearchUser from "./Pages/SearchUser";
 import ChangePassword from "./Pages/ChangePassword";
+import FilterByUserId from "./Pages/FilterByUserId";
 
 function App() {
   const [cookies] = useCookies();
@@ -32,6 +33,10 @@ function App() {
 
           <Route exact path="/change_password">
             <ChangePassword />
+          </Route>
+
+          <Route exact path="/filterbyuserid">
+            <FilterByUserId />
           </Route>
 
           <Route exact path="/">
