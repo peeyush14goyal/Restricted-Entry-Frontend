@@ -63,9 +63,14 @@ export const getAdmin = async () => {
   return credentials;
 };
 
-export const checkloggedIn = async () => {
-  let response = db.collection("admin").doc("values");
-  let dataVal = await response.get();
-  let credentials = dataVal.data();
-  return credentials.loggedIn;
+export const setCredentials = async (user) => {
+  db.collection("admin")
+    .doc("values")
+    .set({
+      username: user.username,
+      password: user.password,
+    })
+    .then(() => {
+      console.log("Crdentials Successfully Changed");
+    });
 };

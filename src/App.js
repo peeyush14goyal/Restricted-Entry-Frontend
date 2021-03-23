@@ -10,6 +10,7 @@ import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
 import FilterByDate from "./Pages/FilterByDate";
 import SearchUser from "./Pages/SearchUser";
+import ChangePassword from "./Pages/ChangePassword";
 
 function App() {
   const [cookies] = useCookies();
@@ -27,6 +28,10 @@ function App() {
           </Route>
           <Route exact path="/searchuser">
             <SearchUser />
+          </Route>
+
+          <Route exact path="/change_password">
+            <ChangePassword />
           </Route>
 
           <Route exact path="/">

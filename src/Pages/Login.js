@@ -45,8 +45,8 @@ let AdminLogin = () => {
   let checkCredentials = () => {
     if (verifyAdmin(user, pass)) {
       history.push("/home");
-      setCookie("user", `${user}`, { maxAge: 3600 });
-      setCookie("password", `${pass}`, { maxAge: 3600 });
+      setCookie("user", `1`, { maxAge: 3600 });
+      setCookie("password", `1`, { maxAge: 3600 });
     } else {
       history.push("/");
     }

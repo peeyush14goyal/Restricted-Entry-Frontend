@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { withStyles } from "@material-ui/core/styles";
@@ -9,7 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useCookies } from "react-cookie";
-import { verifyAdmin } from "../data/API";
+import { getAdmin, setCredentials, verifyAdmin } from "../data/API";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Login Page for Admin
-let AdminLogin = () => {
+let ChangePassword = () => {
   let history = useHistory();
   let [user, setUser] = useState();
   let [pass, setPass] = useState();
@@ -40,17 +40,24 @@ let AdminLogin = () => {
 
   const classes = useStyles();
 
-  // Currently hardcoded user and password for later stages adding this to database
-  // After Login check the credentials of user
-  let checkCredentials = () => {
-    if (verifyAdmin(user, pass)) {
-      history.push("/home");
-      setCookie("user", `${user}`, { maxAge: 3600 });
-      setCookie("password", `${pass}`, { maxAge: 3600 });
-    } else {
-      history.push("/");
-    }
+  //   useEffect(() => {
+  //     let getCredentials = async () => {
+  //       let values = await getAdmin();
+  //       setUser(values);
+  //     };
+  //     getCredentials();
+  //   });
+
+  const changeCredentials = (e) => {
+    e.preventDefault();
+    console.log("Function called");
+    let values = {
+      username: user,
+      password: pass,
+    };
+    setCredentials(values);
   };
+
   return (
     <div>
       <div>
@@ -65,7 +72,7 @@ let AdminLogin = () => {
         </div>
       </div>
       <div className="loginPage">
-        <form className="credential" onSubmit={checkCredentials}>
+        <form className="credential" onSubmit={changeCredentials}>
           <div>
             <TextField
               id="outlined-search"
@@ -119,7 +126,7 @@ let AdminLogin = () => {
               <div className="lockIcon">
                 <LockOpenIcon />
               </div>
-              <div>Login</div>
+              <div>Change Credentials</div>
             </button>
           </div>
         </form>
@@ -128,4 +135,4 @@ let AdminLogin = () => {
   );
 };
 
-export default withStyles(useStyles)(AdminLogin);
+export default withStyles(useStyles)(ChangePassword);
