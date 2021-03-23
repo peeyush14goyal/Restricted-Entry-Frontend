@@ -34,9 +34,7 @@ const useStyles = makeStyles((theme) => ({
 const FilterByDate = () => {
   const classes = useStyles();
 
-  const [selectedDate, setSelectedDate] = useState(
-    new Date("2014-08-18")
-  );
+  const [selectedDate, setSelectedDate] = useState(new Date("2014-08-18"));
 
   const [data, setData] = useState();
   const [isLoaded, setLoaded] = useState(false);
@@ -62,7 +60,9 @@ const FilterByDate = () => {
   const getDetails = (e) => {
     setLoaded(false);
     e.preventDefault();
-    fetchData();
+    if (selectedDate && selectedDate.length > 0) {
+      fetchData();
+    }
   };
 
   return (
