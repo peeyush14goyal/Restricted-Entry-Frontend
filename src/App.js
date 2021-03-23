@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AdminLogin from "./Pages/Login";
 import {
   BrowserRouter as Router,
@@ -16,38 +16,32 @@ function App() {
 
   return (
     <Router>
-      <Switch>
-        <Route exact path="/home">
-          {cookies.user && cookies.password ? (
+      {cookies.user && cookies.password ? (
+        <Switch>
+          <Route exact path="/home">
             <AdminHome />
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Route>
+          </Route>
 
-        <Route exact path="/filterbydate">
-          {cookies.user && cookies.password ? (
+          <Route exact path="/filterbydate">
             <FilterByDate />
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Route>
-        <Route exact path="/searchuser">
-          {cookies.user && cookies.password ? (
+          </Route>
+          <Route exact path="/searchuser">
             <SearchUser />
-          ) : (
-            <Redirect to="/" />
-          )}
-        </Route>
+          </Route>
 
-        <Route exact path="/">
-          {cookies.user && cookies.password ? (
+          <Route exact path="/">
             <Redirect to="/home" />
-          ) : (
+          </Route>
+        </Switch>
+      ) : (
+        <>
+          <Redirect to="/" />
+
+          <Route exact path="/">
             <AdminLogin />
-          )}
-        </Route>
-      </Switch>
+          </Route>
+        </>
+      )}
     </Router>
   );
 }

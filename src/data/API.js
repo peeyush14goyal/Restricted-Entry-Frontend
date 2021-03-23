@@ -55,3 +55,17 @@ export const verifyAdmin = async (user, pass) => {
   }
   return false;
 };
+
+export const getAdmin = async () => {
+  let response = db.collection("admin").doc("values");
+  let dataVal = await response.get();
+  let credentials = dataVal.data();
+  return credentials;
+};
+
+export const checkloggedIn = async () => {
+  let response = db.collection("admin").doc("values");
+  let dataVal = await response.get();
+  let credentials = dataVal.data();
+  return credentials.loggedIn;
+};
