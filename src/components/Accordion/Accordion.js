@@ -6,6 +6,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Typography from "@material-ui/core/Typography";
 import CheckTable from "../Table/CheckTable";
+import CheckShowTable from "../Table/CheckShowTable";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +90,7 @@ const Accordions = ({ data }) => {
                       <text className="registerColor">Registered On:</text>{" "}
                       <b>{x.Date}</b>
                     </div>
-                    <CheckTable data={x} />
+                    <CheckShowTable data={x} />
                   </div>
                 </div>
               </AccordionDetails>
