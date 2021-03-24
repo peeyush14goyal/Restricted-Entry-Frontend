@@ -95,11 +95,6 @@ const CheckShowTable = ({ data }) => {
           </TableHead>
           <TableBody>
             {rows &&
-              console.log(
-                "Rows are ",
-                rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              )}
-            {rows &&
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {

@@ -41,17 +41,17 @@ let AdminLogin = () => {
   const classes = useStyles();
 
   // After Login check the credentials of user
-  let checkCredentials = () => {
-    // if (verifyAdmin(user, pass) === true) {
-    //   history.push("/home");
-    //   setCookie("user", "101", { maxAge: 3600 });
-    //   setCookie("password", "101", { maxAge: 3600 });
-    // } else {
-    //   history.push("/");
-    // }
-    history.push("/home");
-    setCookie("user", "101", { maxAge: 3600 });
-    setCookie("password", "101", { maxAge: 3600 });
+  let checkCredentials = (e) => {
+    e.preventDefault();
+    verifyAdmin(user, pass).then((res) => {
+      if (res === true) {
+        history.push("/home");
+        setCookie("user", "101", { maxAge: 3600 });
+        setCookie("password", "101", { maxAge: 3600 });
+      } else {
+        window.location.reload();
+      }
+    });
   };
   return (
     <div>

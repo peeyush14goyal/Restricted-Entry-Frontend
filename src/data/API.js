@@ -49,18 +49,16 @@ export const verifyAdmin = async (user, pass) => {
   let response = db.collection("admin").doc("values");
   let dataVal = await response.get();
   let credentials = dataVal.data();
-  console.log("Crdentials are ", credentials);
-
-  console.log("Crdential first is ", credentials[0]);
-
-  // if (credentials.username === user && credentials.password === pass) {
-  //   console.log("Agreed Crdentials are ", credentials);
-  //   return true;
-  // }
-  if (user === "admin" && pass === "admin") {
-    return true;
-  }
-  return false;
+  let check = false;
+  let keys = Object.keys(credentials);
+  keys.forEach((x) => {
+    if (x === user) {
+      if (credentials[`${user}`] === pass) {
+        check = true;
+      }
+    }
+  });
+  return check;
 };
 
 export const getAdmin = async () => {
