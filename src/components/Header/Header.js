@@ -6,8 +6,13 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import PersonIcon from "@material-ui/icons/Person";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import Sidebar from "react-sidebar";
 import bg from "./assets/bg4.png";
+import {Link} from "react-router-dom";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
 
@@ -24,25 +29,36 @@ const useStyles = makeStyles((theme) => ({
   bgColor: {
     backgroundColor: "#302d40",
   },
-  headu1: {
-    borderLeft: "3px solid white",
-    padding: "10%",
-  },
-  head2: {
-    textDecoration: "none",
-    padding: "10%",
-  },
-  headu2: {
+  headu: {
     borderLeft: "3px solid white",
     padding: "10%",
   },
 }));
 
 const Header = ({ name }) => {
+
+  let history = useHistory();
+  const [, removeCookie] = useCookies();
   const [toggle, setToggle] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const onSetSidebarOpen = (open) => {
     setToggle(open);
   };
+
+  const logout = () => {
+      removeCookie("user");
+      removeCookie("password");
+  };
+
   const classes = useStyles();
   return (
     <div className="home__Title">
@@ -51,38 +67,74 @@ const Header = ({ name }) => {
           <Typography variant="h6" className={classes.title}>
             Dashboard
           </Typography>
-          <Button color="inherit">
-            <PersonIcon /> <p className="gap">{name}</p>
-          </Button>
+          <div>
+            <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+              <PersonIcon /> <p className="gap">{name}</p>
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem><Link to = "/change_password" style = {{ textDecoration: "none", color: "black"}}>Change Credentials</Link></MenuItem>
+              <MenuItem onClick={logout}>Logout</MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
 
       <Sidebar
         sidebar={
           <div>
-            <img src={bg} alt="menu-btn"></img>
-            <div className="heading1">
-              <NavLink
-                to="/filterbydate"
+             <NavLink
+                to="/home"
                 style={{
                   textDecoration: "none",
                   color: "white",
-                  padding: "10%",
                 }}
-                activeClassName={classes.headu1}
               >
-                Filter By Date
+                <img src={bg} alt="menu-img" width = "100%"></img>
               </NavLink>
-            </div>
-            <div className="heading2">
+            <div className="heading">
               <NavLink
                 to="/home"
                 style={{
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
+                  paddingRight: "100%"
                 }}
-                activeClassName={classes.headu2}
+                activeClassName={classes.headu}
+              >
+                Home
+              </NavLink>
+            </div>
+            <div className="heading">
+              <NavLink
+                to="/filterbydate"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  padding: "10%",
+                  paddingRight: "55%"
+                }}
+                activeClassName={classes.headu}
+              >
+                Filter By Date
+              </NavLink>
+            </div>
+            <div className="heading">
+              <NavLink
+                to="/filterbyuserid"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  padding: "10%",
+                  paddingRight: "52%"
+                }}
+                activeClassName={classes.headu}
               >
                 Filter By User Id
               </NavLink>
@@ -104,4 +156,4 @@ const Header = ({ name }) => {
   );
 };
 
-export default Header;
+export default Header

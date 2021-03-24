@@ -174,3 +174,24 @@ button:hover {
   margin-top: 30px;
   margin-bottom: 25px;
 }
+
+.CPbuttonDiv {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.CPbuttonComp {
+  border-radius: 20px;
+  font-size: 20px;
+}
+
+.lockIcon {
+  margin-right: 10px;
+  margin-top: 0px;
+}
+
+.filterByUserId {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}

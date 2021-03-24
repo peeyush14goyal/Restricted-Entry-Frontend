@@ -121,8 +121,8 @@ let ChangePassword = () => {
               }}
             />
           </div>
-          <div className="buttonDiv">
-            <button type="submit" className="buttonComp">
+          <div className="CPbuttonDiv">
+            <button type="submit" className="CPbuttonComp">
               <div className="lockIcon">
                 <LockOpenIcon />
               </div>
