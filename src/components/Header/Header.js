@@ -8,11 +8,11 @@ import PersonIcon from "@material-ui/icons/Person";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import Sidebar from "react-sidebar";
 import bg from "./assets/bg4.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
 
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = ({ name }) => {
-
   let history = useHistory();
   const [, removeCookie] = useCookies();
   const [toggle, setToggle] = useState(false);
@@ -55,8 +54,9 @@ const Header = ({ name }) => {
   };
 
   const logout = () => {
-      removeCookie("user");
-      removeCookie("password");
+    console.log("Logout");
+    removeCookie("user", { maxAge: 0 });
+    removeCookie("password", { maxAge: 0 });
   };
 
   const classes = useStyles();
@@ -68,7 +68,12 @@ const Header = ({ name }) => {
             Dashboard
           </Typography>
           <div>
-            <Button color="inherit" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+            <Button
+              color="inherit"
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
               <PersonIcon /> <p className="gap">{name}</p>
             </Button>
             <Menu
@@ -78,7 +83,14 @@ const Header = ({ name }) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem><Link to = "/change_password" style = {{ textDecoration: "none", color: "black"}}>Change Credentials</Link></MenuItem>
+              <MenuItem>
+                <Link
+                  to="/change_password"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  Change Credentials
+                </Link>
+              </MenuItem>
               <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
           </div>
@@ -88,15 +100,15 @@ const Header = ({ name }) => {
       <Sidebar
         sidebar={
           <div>
-             <NavLink
-                to="/home"
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                <img src={bg} alt="menu-img" width = "100%"></img>
-              </NavLink>
+            <NavLink
+              to="/home"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              <img src={bg} alt="menu-img" width="100%"></img>
+            </NavLink>
             <div className="heading">
               <NavLink
                 to="/home"
@@ -104,7 +116,6 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  paddingRight: "100%"
                 }}
                 activeClassName={classes.headu}
               >
@@ -118,7 +129,6 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  paddingRight: "55%"
                 }}
                 activeClassName={classes.headu}
               >
@@ -132,7 +142,6 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  paddingRight: "52%"
                 }}
                 activeClassName={classes.headu}
               >
@@ -156,4 +165,4 @@ const Header = ({ name }) => {
   );
 };
 
-export default Header
+export default Header;

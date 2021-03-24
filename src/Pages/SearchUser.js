@@ -49,6 +49,7 @@ const SearchUser = () => {
             onChange={handleChange}
             label="Age"
           >
+            {console.log()}
             {listUsers &&
               listUsers.length > 0 &&
               listUsers.map((x) => (

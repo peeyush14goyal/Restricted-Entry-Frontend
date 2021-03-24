@@ -18,7 +18,10 @@ function App() {
 
   return (
     <Router>
-      {cookies.user && cookies.password ? (
+      {cookies.user &&
+      cookies.user.length > 0 &&
+      cookies.password &&
+      cookies.password.length > 0 ? (
         <Switch>
           <Route exact path="/home">
             <AdminHome />

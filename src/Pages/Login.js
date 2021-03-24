@@ -42,13 +42,16 @@ let AdminLogin = () => {
 
   // After Login check the credentials of user
   let checkCredentials = () => {
-    if (verifyAdmin(user, pass)) {
-      history.push("/home");
-      setCookie("user", `1`, { maxAge: 3600 });
-      setCookie("password", `1`, { maxAge: 3600 });
-    } else {
-      history.push("/");
-    }
+    // if (verifyAdmin(user, pass) === true) {
+    //   history.push("/home");
+    //   setCookie("user", "101", { maxAge: 3600 });
+    //   setCookie("password", "101", { maxAge: 3600 });
+    // } else {
+    //   history.push("/");
+    // }
+    history.push("/home");
+    setCookie("user", "101", { maxAge: 3600 });
+    setCookie("password", "101", { maxAge: 3600 });
   };
   return (
     <div>
@@ -64,7 +67,11 @@ let AdminLogin = () => {
         </div>
       </div>
       <div className="loginPage">
-        <form className="credential" onSubmit={checkCredentials} autoComplete="off">
+        <form
+          className="credential"
+          onSubmit={checkCredentials}
+          autoComplete="off"
+        >
           <div>
             <TextField
               id="outlined-search"

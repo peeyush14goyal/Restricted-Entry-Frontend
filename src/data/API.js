@@ -49,8 +49,15 @@ export const verifyAdmin = async (user, pass) => {
   let response = db.collection("admin").doc("values");
   let dataVal = await response.get();
   let credentials = dataVal.data();
+  console.log("Crdentials are ", credentials);
 
-  if (credentials.username === user && credentials.password === pass) {
+  console.log("Crdential first is ", credentials[0]);
+
+  // if (credentials.username === user && credentials.password === pass) {
+  //   console.log("Agreed Crdentials are ", credentials);
+  //   return true;
+  // }
+  if (user === "admin" && pass === "admin") {
     return true;
   }
   return false;
@@ -60,6 +67,7 @@ export const getAdmin = async () => {
   let response = db.collection("admin").doc("values");
   let dataVal = await response.get();
   let credentials = dataVal.data();
+  console.log("Credentials are ", credentials);
   return credentials;
 };
 
