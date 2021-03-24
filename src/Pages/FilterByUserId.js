@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { getOneUserData } from "../data/API";
 import Header from "../components/Header/Header";
-import Accordions from "../components/Accordion/Accordion";
+import OneUser from "../components/OneUser/OneUser";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./admin.css";
 
@@ -100,7 +100,7 @@ const FilterByUserId = () => {
         <>
           {console.log("Data is ", data)}
           <div className="row">
-            <Accordions data={data} />
+            <OneUser data = {data}/>
           </div>
         </>
       ) : (
