@@ -25,6 +25,15 @@ export const getUserData = async () => {
   return data_array;
 };
 
+export const getVisits = async () => {
+  let count = 0;
+  let response = await getUserData();
+  response.forEach((x) => {
+    count += x.Time.length / 2;
+  });
+  return count;
+};
+
 export const getChartValues = (data_array) => {
   let values = [];
   data_array.forEach((x, i) => {
@@ -94,5 +103,15 @@ export const getLineChart = async () => {
     }
     console.log("Data arary is ", data_array);
     return data_array;
+  }
+};
+
+export const getUserCount = async () => {
+  const response = db.collection("User_Data");
+
+  let dataVal = await response.get();
+
+  if (dataVal) {
+    return dataVal.docs.length;
   }
 };

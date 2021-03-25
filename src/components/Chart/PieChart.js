@@ -10,7 +10,8 @@ CanvasJS.addColorSet("customColorSet1", [
   "#eb98cc",
 ]);
 
-const LineChart = ({ values }) => {
+const PieChart = ({ values }) => {
+  console.log("values are ", values);
   const [options, setOptions] = useState();
 
   useEffect(() => {
@@ -20,26 +21,26 @@ const LineChart = ({ values }) => {
       width: "650",
 
       colorSet: "customColorSet1",
-      axisX: {
-        labelFontColor: "white",
-        valueFormatString: "D MMM YYYY",
-        labelAngle: 0,
-        interval: 1,
-        intervalType: "day",
-      },
-      axisY: {
-        labelFontColor: "white",
-      },
+
       title: {
-        text: "Statistics",
+        text: "Users Logged in Today",
         fontColor: "white",
         fontFamily: "Arial",
         padding: 10,
       },
+      axisY: {
+        valueFormatString: '##0.00"%"',
+        labelFontColor: "white",
+      },
       data: [
         {
-          type: "line",
-          //   xValueFormatString: "D MMM YYYY",
+          type: "pie",
+          startAngle: 75,
+          toolTipContent: "<b>{label}</b>: {y}%",
+          legendText: "{label}",
+          indexLabelFontSize: 16,
+          indexLabelFontColor: "white",
+          indexLabel: "{label}:  {y}",
           dataPoints: values,
         },
       ],
@@ -55,4 +56,4 @@ const LineChart = ({ values }) => {
   );
 };
 
-export default LineChart;
+export default PieChart;
