@@ -6,12 +6,13 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import AdminHome from "./Pages/Home";
 import { useCookies } from "react-cookie";
 import FilterByDate from "./Pages/FilterByDate";
 import SearchUser from "./Pages/SearchUser";
 import ChangePassword from "./Pages/ChangePassword";
 import FilterByUserId from "./Pages/FilterByUserId";
+import Home from "./Pages/Home";
+import Users from "./Pages/Users";
 
 function App() {
   const [cookies] = useCookies();
@@ -24,7 +25,10 @@ function App() {
       cookies.password.length > 0 ? (
         <Switch>
           <Route exact path="/home">
-            <AdminHome />
+            <Home />
+          </Route>
+          <Route exact path="/users">
+            <Users />
           </Route>
 
           <Route exact path="/filterbydate">

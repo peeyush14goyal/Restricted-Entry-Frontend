@@ -137,6 +137,19 @@ const Header = ({ name }) => {
             </div>
             <div className="heading">
               <NavLink
+                to="/users"
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  padding: "10%",
+                }}
+                activeClassName={classes.headu}
+              >
+                All Users Statistics
+              </NavLink>
+            </div>
+            <div className="heading">
+              <NavLink
                 to="/filterbyuserid"
                 style={{
                   textDecoration: "none",

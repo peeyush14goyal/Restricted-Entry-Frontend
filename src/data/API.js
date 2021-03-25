@@ -18,7 +18,6 @@ export const getUserData = async () => {
   let dataVal = await response.get();
 
   let data_array = [];
-
   dataVal &&
     dataVal.docs.forEach((x) => {
       data_array = [...data_array, x.data()];
@@ -65,7 +64,6 @@ export const getAdmin = async () => {
   let response = db.collection("admin").doc("values");
   let dataVal = await response.get();
   let credentials = dataVal.data();
-  console.log("Credentials are ", credentials);
   return credentials;
 };
 
@@ -79,4 +77,22 @@ export const setCredentials = async (user) => {
     .then(() => {
       console.log("Crdentials Successfully Changed");
     });
+};
+
+export const getLineChart = async () => {
+  let data_array = [];
+  const response = db.collection("DateTime");
+  const values = await response.get();
+
+  if (values) {
+    for (const date of values.docs) {
+      const contents = await getDateTime(date.id);
+      data_array = [
+        ...data_array,
+        { x: new Date(Date.parse(date.id)), y: contents.length },
+      ];
+    }
+    console.log("Data arary is ", data_array);
+    return data_array;
+  }
 };

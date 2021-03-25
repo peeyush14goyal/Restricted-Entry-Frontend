@@ -72,7 +72,11 @@ let ChangePassword = () => {
         </div>
       </div>
       <div className="loginPage">
-        <form className="credential" onSubmit={changeCredentials}>
+        <form
+          className="credential"
+          onSubmit={changeCredentials}
+          autoComplete="off"
+        >
           <div>
             <TextField
               id="outlined-search"

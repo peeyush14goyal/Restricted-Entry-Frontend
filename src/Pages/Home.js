@@ -1,42 +1,40 @@
 import React, { useState, useEffect } from "react";
-import "./admin.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ColumnChart from "../components/Chart/ColumnChart";
+import { getLineChart } from "../data/API";
+import LineChart from "../components/Chart/LineChart";
 import Header from "../components/Header/Header";
-import Accordions from "../components/Accordion/Accordion";
-import { getChartValues, getUserData, verifyAdmin } from "../data/API";
+import "./home.css";
 
-// Home page for admin
-let AdminHome = () => {
-  const [data, setData] = useState([]);
-
-  // get data from firestore
-  const fetchData = async () => {
-    const data_array = await getUserData();
-    data_array && setData(data_array);
+let Home = () => {
+  const [lineChart, setLine] = useState([]);
+  const lineChartData = async () => {
+    const data_val = await getLineChart();
+    data_val && setLine(data_val);
   };
 
   useEffect(() => {
-    fetchData();
-    verifyAdmin("admin", "admin");
+    lineChartData();
   }, []);
-
   return (
-    <div>
+    <div className="homeData">
       <Header name="ADMIN" />
-
-      {data && data.length > 0 ? (
-        <>
-          <ColumnChart values={getChartValues(data)} />
-          <div className="row">
-            <Accordions data={data} />
+      <div className="summaryData">
+        <div>
+          <div className="totalData">
+            Total Users <div>15</div>
           </div>
-        </>
-      ) : (
-        <div></div>
-      )}
+          <div className="totalData">
+            Total Visits <div>20</div>
+          </div>
+        </div>
+        <div>
+          {lineChart && lineChart.length > 0 && (
+            <LineChart values={lineChart} />
+          )}
+        </div>
+      </div>
+      <div>Today's Statistics</div>
     </div>
   );
 };
 
-export default AdminHome;
+export default Home;

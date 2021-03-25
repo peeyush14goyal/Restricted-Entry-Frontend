@@ -10,29 +10,37 @@ CanvasJS.addColorSet("customColorSet1", [
   "#eb98cc",
 ]);
 
-const ColumnChart = ({ values }) => {
+const LineChart = ({ values }) => {
+  console.log("values are ", values);
   const [options, setOptions] = useState();
 
   useEffect(() => {
     setOptions({
-      backgroundColor: "#2e2b3e",
       animationEnabled: true,
+      backgroundColor: "#2e2b3e",
+      width: "650",
 
       colorSet: "customColorSet1",
       axisX: {
         labelFontColor: "white",
+        valueFormatString: "D MMM YYYY",
+        labelAngle: 0,
+        interval: 1,
+        intervalType: "day",
       },
       axisY: {
         labelFontColor: "white",
       },
       title: {
-        text: "CheckIn - CheckOut",
+        text: "Statistics",
         fontColor: "white",
         fontFamily: "Arial",
+        padding: 10,
       },
       data: [
         {
-          type: "column",
+          type: "line",
+          //   xValueFormatString: "D MMM YYYY",
           dataPoints: values,
         },
       ],
@@ -41,11 +49,11 @@ const ColumnChart = ({ values }) => {
 
   return (
     <div className="row">
-      <div className="col-6 text-center mt-4 offset-3">
+      <div className="">
         <CanvasJSChart options={options} />
       </div>
     </div>
   );
 };
 
-export default ColumnChart;
+export default LineChart;

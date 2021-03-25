@@ -1,0 +1,18 @@
+.homeData {
+  color: white;
+}
+.summaryData {
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  margin-top: 5%;
+}
+.totalData {
+  width: 80%;
+  margin: 0 auto;
+  height: 40%;
+  margin-top: 10%;
+  font-size: larger;
+  font-weight: bold;
+}
