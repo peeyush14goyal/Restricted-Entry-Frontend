@@ -10,6 +10,25 @@ import Header from "../components/Header/Header";
 import Accordions from "../components/Accordion/Accordion";
 import "./home.css";
 import PieChart from "../components/Chart/PieChart";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import CountUp from 'react-countup';
+
+
+const useStyles = makeStyles((theme) => ({
+  root1: {
+    maxWidth: 345,
+    minHeight: 150,
+    backgroundColor: "#302d40",
+    color: "white",
+    boxShadow: "0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)",
+    backgroundColor: "#2e2b3e",
+    color: "white",
+  },
+}));
 
 let Home = () => {
   const [lineChart, setLine] = useState([]);
@@ -17,6 +36,7 @@ let Home = () => {
   const [visits, setVisits] = useState(0);
   const [data, setData] = useState();
   const [pieChart, setPie] = useState();
+  const classes = useStyles();
 
   const lineChartData = async () => {
     const data_val = await getLineChart();
@@ -38,6 +58,7 @@ let Home = () => {
     data_array && setData(data_array);
 
     if (data && data.length > 0 && userCount > 0) {
+      
       setPie([
         { y: data_array.length, label: "Logged In" },
         { y: userCount - data_array.length, label: "Not Logged In" },
@@ -57,10 +78,28 @@ let Home = () => {
       <div className="summaryData">
         <div>
           <div className="totalData">
-            Total Users <div>{userCount}</div>
+            <Card className={classes.root1}>
+              <CardContent className={classes.content}>
+              <Typography gutterBottom variant="h5" component="h2">
+                  Total Users
+                </Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                  <CountUp end={userCount} duration={1.5}/> 
+                </Typography>
+              </CardContent>
+            </Card>
           </div>
           <div className="totalData">
-            Total Visits <div>{visits}</div>
+            <Card className={classes.root1}>
+                <CardContent className={classes.content}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    Total Visits
+                  </Typography>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    <CountUp end={visits} duration={1.5} decimals={1}/>
+                  </Typography>
+                </CardContent>
+              </Card>
           </div>
         </div>
         <div>

@@ -34,6 +34,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: "100%",
+    zIndex: 0,
   },
 
   container: {
