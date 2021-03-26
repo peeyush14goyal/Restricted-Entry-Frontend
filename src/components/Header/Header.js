@@ -15,6 +15,7 @@ import bg from "./assets/bg4.png";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { NavLink } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -30,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#302d40",
   },
   headu: {
-    borderLeft: "3px solid white",
-    padding: "10%",
+    // borderLeft: "3px solid white",
+    color:"#939396 !important",
   },
 }));
 
@@ -109,56 +110,60 @@ const Header = ({ name }) => {
             >
               <img src={bg} alt="menu-img" width="100%"></img>
             </NavLink>
-            <div className="heading">
+            <div className="heading container-fluid">
               <NavLink
                 to="/home"
                 style={{
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
+                  className: "row"
                 }}
                 activeClassName={classes.headu}
               >
-                Home
+                <div className = "col-12">Home</div>
               </NavLink>
             </div>
-            <div className="heading">
+            <div className="heading container-fluid">
               <NavLink
                 to="/filterbydate"
                 style={{
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
+                  className: "row"
                 }}
                 activeClassName={classes.headu}
               >
-                Filter By Date
+                <div className = "col-12">Filter By Date</div>
               </NavLink>
             </div>
-            <div className="heading">
+            <div className="heading container-fluid">
               <NavLink
                 to="/users"
                 style={{
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
+                  className: "row"
                 }}
                 activeClassName={classes.headu}
               >
-                All Users Statistics
+                <div className = "col-12">All Users Statistics</div>
               </NavLink>
             </div>
-            <div className="heading">
+            <div className="heading container-fluid">
               <NavLink
                 to="/filterbyuserid"
                 style={{
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
+                  className: "row"
                 }}
                 activeClassName={classes.headu}
               >
-                Filter By User Id
+                <div className = "col-12">Filter By User Id</div>
               </NavLink>
             </div>
           </div>
