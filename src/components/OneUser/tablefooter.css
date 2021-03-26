@@ -2,3 +2,6 @@
   background-color: #302d40 !important;
   color: white !important;
 }
+.MuiTableCell-stickyHeader {
+  z-index: 1 !important;
+}
