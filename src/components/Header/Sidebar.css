@@ -13,7 +13,7 @@
 
 .menubutton {
   background-color: #302d40;
-  padding : 22px;
+  padding: 22px;
 }
 
 .menubutton:hover {
@@ -23,3 +23,6 @@
 .activeroute {
   background-color: black;
 }
+/* .home__Title {
+  position: fixed;
+} */

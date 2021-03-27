@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headu: {
     // borderLeft: "3px solid white",
-    color:"#939396 !important",
+    color: "#939396 !important",
   },
 }));
 
@@ -117,11 +117,11 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  className: "row"
+                  className: "row",
                 }}
                 activeClassName={classes.headu}
               >
-                <div className = "col-12">Home</div>
+                <div className="col-12">Home</div>
               </NavLink>
             </div>
             <div className="heading container-fluid">
@@ -131,11 +131,11 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  className: "row"
+                  className: "row",
                 }}
                 activeClassName={classes.headu}
               >
-                <div className = "col-12">Filter By Date</div>
+                <div className="col-12">Filter By Date</div>
               </NavLink>
             </div>
             <div className="heading container-fluid">
@@ -145,11 +145,11 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  className: "row"
+                  className: "row",
                 }}
                 activeClassName={classes.headu}
               >
-                <div className = "col-12">All Users Statistics</div>
+                <div className="col-12">All Users Statistics</div>
               </NavLink>
             </div>
             <div className="heading container-fluid">
@@ -159,11 +159,11 @@ const Header = ({ name }) => {
                   textDecoration: "none",
                   color: "white",
                   padding: "10%",
-                  className: "row"
+                  className: "row",
                 }}
                 activeClassName={classes.headu}
               >
-                <div className = "col-12">Filter By User Id</div>
+                <div className="col-12">Filter By User Id</div>
               </NavLink>
             </div>
           </div>

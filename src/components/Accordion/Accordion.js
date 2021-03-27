@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import CheckTable from "../Table/CheckTable";
 import CheckShowTable from "../Table/CheckShowTable";
 import { makeStyles } from "@material-ui/core/styles";
+import "./accordian.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,10 +51,10 @@ const Accordions = ({ data }) => {
     setExpanded(isExpanded ? panel : false);
   };
   return (
-    <div className="col-10 offset-1">
+    <div className="rootAccordian">
       {data.map((x, i) => {
         return (
-          <div key={x.User_ID} className="col-8 offset-2 mt-4 mb-4">
+          <div key={x.User_ID} className="allAccordian mt-4 mb-4">
             <Accordion
               expanded={expanded === `panel${i + 1}`}
               onChange={handleChange(`panel${i + 1}`)}

@@ -18,7 +18,8 @@ const PieChart = ({ values }) => {
     setOptions({
       animationEnabled: true,
       backgroundColor: "#2e2b3e",
-      width: "650",
+      width: "500",
+      height: "300",
 
       colorSet: "customColorSet1",
 
@@ -45,7 +46,7 @@ const PieChart = ({ values }) => {
         },
       ],
     });
-  }, []);
+  }, [values]);
 
   return (
     <div className="row">

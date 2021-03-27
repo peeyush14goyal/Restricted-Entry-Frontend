@@ -44,11 +44,11 @@ const LineChart = ({ values }) => {
         },
       ],
     });
-  }, []);
+  }, [values]);
 
   return (
     <div className="row">
-      <div className="">
+      <div className="lineChartCSS">
         <CanvasJSChart options={options} />
       </div>
     </div>
