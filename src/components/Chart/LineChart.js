@@ -5,9 +5,9 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 CanvasJS.addColorSet("customColorSet1", [
   //colorSet Array
-  "#7524d8",
-  "#36aeed",
-  "#eb98cc",
+  "white",
+  "white",
+  "white",
 ]);
 
 const LineChart = ({ values }) => {

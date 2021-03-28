@@ -55,7 +55,6 @@ const Header = ({ name }) => {
   };
 
   const logout = () => {
-    console.log("Logout");
     removeCookie("user", { maxAge: 0 });
     removeCookie("password", { maxAge: 0 });
   };

@@ -11,7 +11,6 @@ CanvasJS.addColorSet("customColorSet1", [
 ]);
 
 const PieChart = ({ values }) => {
-  console.log("values are ", values);
   const [options, setOptions] = useState();
 
   useEffect(() => {

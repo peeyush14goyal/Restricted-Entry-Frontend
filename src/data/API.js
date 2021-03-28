@@ -101,7 +101,6 @@ export const getLineChart = async () => {
         { x: new Date(Date.parse(date.id)), y: contents.length },
       ];
     }
-    console.log("Data arary is ", data_array);
     return data_array;
   }
 };

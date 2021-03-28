@@ -13,6 +13,7 @@ let Users = () => {
   // get data from firestore
   const fetchData = async () => {
     const data_array = await getUserData();
+    console.log("Data Array is ", data_array);
     data_array && setData(data_array);
   };
 

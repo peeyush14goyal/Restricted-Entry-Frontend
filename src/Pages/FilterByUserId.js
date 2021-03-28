@@ -41,7 +41,6 @@ const FilterByUserId = () => {
 
   const fetchData = async () => {
     const data_array = await getOneUserData(selectedUserId);
-    console.log("User single data: ", data_array);
     data_array && setData([data_array]);
     if (data_array === undefined || data_array.length === 0) {
       setNotFound(true);
@@ -98,9 +97,8 @@ const FilterByUserId = () => {
 
       {data && data.length > 0 && isLoaded ? (
         <>
-          {console.log("Data is ", data)}
           <div className="row">
-            <OneUser data = {data}/>
+            <OneUser data={data} />
           </div>
         </>
       ) : (

@@ -19,13 +19,16 @@
   font-weight: bold;
 }
 .homeSection2 {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
-  margin-right: 10px;
+  /* margin-right: 10px; */
+  background-color: rgb(28, 25, 41);
+  padding-left: 40px;
+  padding-top: 20px;
 }
 .homeSection2__display {
   display: grid;
-  grid-template-columns: 4fr 8fr;
+  grid-template-columns: 3fr 1fr 8fr;
 }
 .accordianHome {
   width: 100%;

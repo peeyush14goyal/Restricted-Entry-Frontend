@@ -60,7 +60,7 @@ let Home = () => {
       val > 0 &&
       setPie([
         { y: data_array.length, label: "Logged In" },
-        { y: val - data_array.length, label: "Not Logged In" },
+        { y: val - data_array.length, label: "Logged Out" },
       ]);
   };
 
@@ -110,9 +110,9 @@ let Home = () => {
         <div className="todayStats">Today's Statistics</div>
         <div className="homeSection2__display">
           <div>
-            {console.log("Pie Chart is ", pieChart)}
             {pieChart && pieChart.length > 0 && <PieChart values={pieChart} />}
           </div>
+          <div></div>
           <div className="accordianHome">
             {data && <Accordions data={data} />}
           </div>

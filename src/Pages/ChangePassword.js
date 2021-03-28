@@ -50,7 +50,6 @@ let ChangePassword = () => {
 
   const changeCredentials = (e) => {
     e.preventDefault();
-    console.log("Function called");
     let values = {
       username: user,
       password: pass,
