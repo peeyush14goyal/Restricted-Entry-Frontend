@@ -5,7 +5,6 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Typography from "@material-ui/core/Typography";
-import CheckTable from "../Table/CheckTable";
 import CheckShowTable from "../Table/CheckShowTable";
 import { makeStyles } from "@material-ui/core/styles";
 import "./accordian.css";

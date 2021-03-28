@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AdminLogin from "./Pages/Login";
 import {
   BrowserRouter as Router,
@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import FilterByDate from "./Pages/FilterByDate";
-import SearchUser from "./Pages/SearchUser";
 import ChangePassword from "./Pages/ChangePassword";
 import FilterByUserId from "./Pages/FilterByUserId";
 import Home from "./Pages/Home";
@@ -33,9 +32,6 @@ function App() {
 
           <Route exact path="/filterbydate">
             <FilterByDate />
-          </Route>
-          <Route exact path="/searchuser">
-            <SearchUser />
           </Route>
 
           <Route exact path="/change_password">

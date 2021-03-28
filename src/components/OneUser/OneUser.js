@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#302d40",
     color: "white",
     backgroundColor: "#2e2b3e",
-    color: "white",
   },
   media: {
     height: 200,

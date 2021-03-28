@@ -35,6 +35,7 @@ let Home = () => {
   const [visits, setVisits] = useState(0);
   const [data, setData] = useState();
   const [pieChart, setPie] = useState([]);
+  const [isLoaded, setLoaded] = useState(true);
   const classes = useStyles();
 
   const lineChartData = async () => {
@@ -69,6 +70,10 @@ let Home = () => {
         { y: loggedIn, label: "Logged In" },
         { y: loggedOut, label: "Logged Out" },
       ]);
+
+    if (data_array && data_array.length === 0) {
+      setLoaded(false);
+    }
   };
 
   useEffect(() => {
@@ -113,17 +118,26 @@ let Home = () => {
           )}
         </div>
       </div>
+
       <div className="homeSection2">
         <div className="todayStats">Today's Statistics</div>
-        <div className="homeSection2__display">
-          <div>
-            {pieChart && pieChart.length > 0 && <PieChart values={pieChart} />}
+        {isLoaded ? (
+          <div className="homeSection2__display">
+            <div>
+              {pieChart && pieChart.length > 0 && (
+                <PieChart values={pieChart} />
+              )}
+            </div>
+            <div></div>
+            <div className="accordianHome">
+              {data && <Accordions data={data} />}
+            </div>
           </div>
-          <div></div>
-          <div className="accordianHome">
-            {data && <Accordions data={data} />}
+        ) : (
+          <div className="noDataFoundToday">
+            <h1>No Data Available for today</h1>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

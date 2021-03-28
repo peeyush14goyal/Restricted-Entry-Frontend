@@ -87,7 +87,6 @@ let AdminLogin = () => {
           setCookie("password", "101", { maxAge: 3600 });
         }, 1000);
       } else {
-        console.log("Error is there");
         handleErrorClick({ vertical: "top", horizontal: "center" });
         setTimeout(() => window.location.reload(), 2000);
       }

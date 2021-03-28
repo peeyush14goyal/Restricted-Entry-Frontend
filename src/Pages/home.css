@@ -25,6 +25,7 @@
   background-color: rgb(28, 25, 41);
   padding-left: 40px;
   padding-top: 20px;
+  min-height: 240px;
 }
 .homeSection2__display {
   display: grid;

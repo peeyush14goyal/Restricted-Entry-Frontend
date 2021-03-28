@@ -209,3 +209,9 @@ button:hover {
   border: none;
   outline: none;
 }
+.noDataFoundToday {
+  color: white;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 10%;
+}

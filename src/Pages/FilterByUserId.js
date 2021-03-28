@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import Header from "../components/Header/Header";
 import OneUser from "../components/OneUser/OneUser";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./admin.css";
-import SearchUser from "./SearchUser";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -51,7 +49,6 @@ const FilterByUserId = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [initialRender, setRender] = useState(true);
   const [dataNotFound, setNotFound] = useState(false);
-  const [user, setUser] = useState();
   const [listUsers, setList] = useState([]);
 
   const fetchData = async (UserId) => {
