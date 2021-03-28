@@ -35,16 +35,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
   },
   grey: {
-<<<<<<< HEAD
     color: "rgb(157, 148, 173)",
-=======
-    color: "#dbd6f8",
+    //color: "#dbd6f8",
   },
   grey1: {
     color: "#dbd6f8",
     fontSize: "20px",
     marginTop: "15px",
->>>>>>> 016ac5dc4b2f2598e5d20a09285c5def51ef6478
   },
 }));
 
