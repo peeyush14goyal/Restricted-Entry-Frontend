@@ -80,8 +80,7 @@ export const setCredentials = async (user) => {
   db.collection("admin")
     .doc("values")
     .set({
-      username: user.username,
-      password: user.password,
+    [user.username] : user.password,
     })
     .then(() => {
       console.log("Crdentials Successfully Changed");
