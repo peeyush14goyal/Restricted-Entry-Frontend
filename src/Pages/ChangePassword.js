@@ -13,7 +13,6 @@ import { getAdmin, setCredentials, verifyAdmin } from "../data/API";
 import Header from "../components/Header/Header";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import { Redirect } from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -71,7 +70,6 @@ let ChangePassword = () => {
       password: pass,
     };
     setCredentials(values).then((x) => {
-      console.log("X is ", x);
       if (x === true) {
         handleClick({ vertical: "top", horizontal: "center" });
         setTimeout(() => history.push("/"), 1000);
@@ -85,13 +83,6 @@ let ChangePassword = () => {
         <div className="home__Title">
           <Header name="ADMIN" />
         </div>
-        {/* <Snackbar
-          anchorOrigin={{ vertical, horizontal }}
-          open={open}
-          onClose={handleClose}
-          message="Credentials Changed Sucessfully"
-          key={vertical + horizontal}
-        /> */}
       </div>
       <Snackbar
         open={open}
