@@ -30,7 +30,7 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 450,
+    minWidth: 300,
   },
 
   container: {
@@ -122,6 +122,7 @@ const CheckShowTable = ({ data }) => {
         component="div"
         count={rows ? rows.length : 0}
         rowsPerPage={rowsPerPage}
+        labelRowsPerPage="Rows / Page"
         page={page}
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
