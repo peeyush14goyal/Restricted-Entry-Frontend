@@ -35,7 +35,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
   },
   grey: {
+<<<<<<< HEAD
     color: "rgb(157, 148, 173)",
+=======
+    color: "#dbd6f8",
+  },
+  grey1: {
+    color: "#dbd6f8",
+    fontSize: "20px",
+    marginTop: "15px",
+>>>>>>> 016ac5dc4b2f2598e5d20a09285c5def51ef6478
   },
 }));
 
@@ -76,7 +85,11 @@ export default function OneUser({ data }) {
                           <Typography
                             variant="body2"
                             component="p"
+<<<<<<< HEAD
                             className={classes.grey}
+=======
+                            className={classes.grey1}
+>>>>>>> 016ac5dc4b2f2598e5d20a09285c5def51ef6478
                           >
                             {x.Time.length / 2 > 10
                               ? x.Time.length / 2 + " visits"
