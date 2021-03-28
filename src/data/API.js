@@ -95,16 +95,26 @@ export const getLineChart = async () => {
 
   if (values) {
     for (const date of values.docs) {
-      const contents = await getDateTime(date.id);
+      const contents = await getVisitsPerDay(date.id);
       data_array = [
         ...data_array,
-        { x: new Date(Date.parse(date.id)), y: contents.length },
+        { x: new Date(Date.parse(date.id)), y: contents },
       ];
     }
     console.log("Data arary is ", data_array);
     return data_array;
   }
 };
+
+export const getVisitsPerDay = async (date) => {
+  let count = 0;
+  const response = await getDateTime(date);
+
+  response.forEach((x) => {
+    count += x.Time.length / 2;
+  });
+  return count;
+}
 
 export const getUserCount = async () => {
   const response = db.collection("User_Data");
