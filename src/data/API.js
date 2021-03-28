@@ -80,11 +80,9 @@ export const setCredentials = async (user) => {
   db.collection("admin")
     .doc("values")
     .set({
-    [user.username] : user.password,
-    })
-    .then(() => {
-      console.log("Crdentials Successfully Changed");
+      [user.username]: user.password,
     });
+  return true;
 };
 
 export const getLineChart = async () => {
@@ -112,7 +110,7 @@ export const getVisitsPerDay = async (date) => {
     count += x.Time.length / 2;
   });
   return count;
-}
+};
 
 export const getUserCount = async () => {
   const response = db.collection("User_Data");

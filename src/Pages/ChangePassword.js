@@ -12,11 +12,12 @@ import { useCookies } from "react-cookie";
 import { getAdmin, setCredentials, verifyAdmin } from "../data/API";
 import Header from "../components/Header/Header";
 import Snackbar from "@material-ui/core/Snackbar";
-// import MuiAlert from "@material-ui/lab/Alert";
+import MuiAlert from "@material-ui/lab/Alert";
+import { Redirect } from "react-router-dom";
 
-// function Alert(props) {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// }
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ let ChangePassword = () => {
 
   const { vertical, horizontal, open } = pos;
 
-  const handleClick = (newState) => () => {
+  const handleClick = (newState) => {
     setPos({ open: true, ...newState });
   };
 
@@ -62,14 +63,20 @@ let ChangePassword = () => {
   };
 
   const classes = useStyles();
+
   const changeCredentials = (e) => {
     e.preventDefault();
     let values = {
       username: user,
       password: pass,
     };
-    setCredentials(values);
-    handleClick({ vertical: "top", horizontal: "center" });
+    setCredentials(values).then((x) => {
+      console.log("X is ", x);
+      if (x === true) {
+        handleClick({ vertical: "top", horizontal: "center" });
+        setTimeout(() => history.push("/"), 1000);
+      }
+    });
   };
 
   return (
@@ -85,17 +92,17 @@ let ChangePassword = () => {
           message="Credentials Changed Sucessfully"
           key={vertical + horizontal}
         /> */}
-        {/* <Snackbar
-          open={pos.open}
-          autoHideDuration={6000}
-          onClose={handleClose}
-          anchorOrigin={{ vertical, horizontal }}
-        >
-          <Alert onClose={handleClose} severity="success">
-            This is a success message!
-          </Alert>
-        </Snackbar> */}
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={10000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical, horizontal }}
+      >
+        <Alert onClose={handleClose} severity="success">
+          Credentials Changed Sucessfully!
+        </Alert>
+      </Snackbar>
       <div className="loginPage">
         <form
           className="credential"
