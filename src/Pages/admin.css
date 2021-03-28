@@ -67,9 +67,9 @@ button:hover {
 }
 
 .home__userImg {
-  height: 200px;
+  height: 180px;
   object-fit: contain;
-  width: 200px;
+  width: 180px;
   margin-top: 15%;
 }
 
