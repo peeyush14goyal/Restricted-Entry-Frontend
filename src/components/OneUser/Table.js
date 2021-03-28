@@ -26,8 +26,8 @@ const StyledTableRow = withStyles((theme) => ({
       backgroundColor: "rgb(157, 148, 173)",
     },
     "&:nth-of-type(even)": {
-        backgroundColor: "rgb(207, 204, 228)",
-      },
+      backgroundColor: "rgb(207, 204, 228)",
+    },
   },
 }))(TableRow);
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
   shadow: {
     boxShadow: "0 8px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%)",
-  }
+  },
 }));
 
 const CheckShowTable = ({ data }) => {
@@ -101,11 +101,6 @@ const CheckShowTable = ({ data }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows &&
-              console.log(
-                "Rows are ",
-                rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              )}
             {rows &&
               rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)

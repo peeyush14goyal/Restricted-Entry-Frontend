@@ -81,7 +81,7 @@ let AdminLogin = () => {
               variant="outlined"
               inputProps={{ style: { fontSize: 25 } }}
               value={user}
-              onBlur={(e) => setUser(e.target.value)}
+              onChange={(e) => setUser(e.target.value)}
               className={classes.root}
               InputLabelProps={{
                 classes: {
@@ -105,7 +105,7 @@ let AdminLogin = () => {
               variant="outlined"
               inputProps={{ style: { fontSize: 25 } }}
               value={pass}
-              onBlur={(e) => setPass(e.target.value)}
+              onChange={(e) => setPass(e.target.value)}
               className={classes.root}
               InputLabelProps={{
                 classes: {

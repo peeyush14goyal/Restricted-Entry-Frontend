@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { getOneUserData } from "../data/API";
 import Header from "../components/Header/Header";
 import OneUser from "../components/OneUser/OneUser";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./admin.css";
+import SearchUser from "./SearchUser";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import { getUserData, getOneUserData } from "../data/API";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -27,6 +32,14 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
     },
   },
+  formControl: {
+    marginTop: "2.5%",
+    marginLeft: "42%",
+    minWidth: 250,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
 }));
 
 const FilterByUserId = () => {
@@ -38,9 +51,11 @@ const FilterByUserId = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [initialRender, setRender] = useState(true);
   const [dataNotFound, setNotFound] = useState(false);
+  const [user, setUser] = useState();
+  const [listUsers, setList] = useState([]);
 
-  const fetchData = async () => {
-    const data_array = await getOneUserData(selectedUserId);
+  const fetchData = async (UserId) => {
+    const data_array = await getOneUserData(UserId);
     data_array && setData([data_array]);
     if (data_array === undefined || data_array.length === 0) {
       setNotFound(true);
@@ -53,6 +68,7 @@ const FilterByUserId = () => {
   const handleUserIdChange = (UserId) => {
     setSelectedUserId(UserId);
     setNotFound(false);
+    fetchData(UserId);
   };
 
   const getDetails = (e) => {
@@ -63,37 +79,48 @@ const FilterByUserId = () => {
     }
   };
 
+  useEffect(() => {
+    const listofUsers = async () => {
+      const response = await getUserData();
+      setList(response);
+    };
+    listofUsers();
+  }, []);
+
   return (
     <div>
       <Header name="ADMIN" />
-      <div className="filterByUserId">
-        <form
-          className={classes.container}
-          noValidate
-          autoComplete="off"
-          onSubmit={(e) => getDetails(e)}
+
+      <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">User</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={selectedUserId}
+          onChange={(e) => handleUserIdChange(e.target.value)}
+          label="User"
         >
-          <TextField
-            id="UserId"
-            label="User Id"
-            type="text"
-            value={selectedUserId}
-            onChange={(e) => handleUserIdChange(e.currentTarget.value)}
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            InputProps={{
-              classes: {
-                txtColor: classes.txtColor,
-              },
-            }}
+          {listUsers &&
+            listUsers.length > 0 &&
+            listUsers.map((x) => (
+              <MenuItem
+                value={x.User_ID}
+              >{`${x.User_ID} - ${x.Name}`}</MenuItem>
+            ))}
+        </Select>
+      </FormControl>
+
+      {/* <SearchUser /> */}
+
+      {!isLoaded && !dataNotFound && (
+        <div className="gifImg">
+          <img
+            src="https://im2.ezgif.com/tmp/ezgif-2-1266bf2119e8.gif"
+            alt="Face Recognition"
+            className="faceImg"
           />
-          <button type="submit" className="buttonComp submitBtn">
-            Submit
-          </button>
-        </form>
-      </div>
+        </div>
+      )}
 
       {data && data.length > 0 && isLoaded ? (
         <>

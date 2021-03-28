@@ -95,6 +95,15 @@ const FilterByDate = () => {
           </button>
         </form>
       </div>
+      {!isLoaded && !dataNotFound && (
+        <div className="gifImg">
+          <img
+            src="https://im7.ezgif.com/tmp/ezgif-7-6cb5bee7df00.gif"
+            alt="Face Recognition"
+            className="faceImg"
+          />
+        </div>
+      )}
 
       {data && data.length > 0 && isLoaded ? (
         <>

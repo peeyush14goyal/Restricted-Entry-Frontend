@@ -48,18 +48,26 @@ let Home = () => {
   };
 
   const fetchData = async () => {
-    const data_array = await getDateTime("2021-03-25");
+    const d = new Date().toISOString();
+    const data_array = await getDateTime(d.substr(0, 10));
     const val = await getUserCount();
     val && setUserCount(val);
-
+    let loggedIn = 0;
+    let loggedOut = 0;
+    data_array.forEach((x) => {
+      if (x.Time.length % 2 === 0) {
+        loggedOut++;
+      } else {
+        loggedIn++;
+      }
+    });
     data_array && setData(data_array);
 
     data_array &&
       data_array.length > 0 &&
-      val > 0 &&
       setPie([
-        { y: data_array.length, label: "Logged In" },
-        { y: val - data_array.length, label: "Logged Out" },
+        { y: loggedIn, label: "Logged In" },
+        { y: loggedOut, label: "Logged Out" },
       ]);
   };
 
