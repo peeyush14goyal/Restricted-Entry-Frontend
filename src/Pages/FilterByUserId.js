@@ -9,6 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { getUserData, getOneUserData } from "../data/API";
+import FR1 from "./assets/FR1.gif";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -111,11 +112,7 @@ const FilterByUserId = () => {
 
       {!isLoaded && !dataNotFound && (
         <div className="gifImg">
-          <img
-            src="https://im2.ezgif.com/tmp/ezgif-2-1266bf2119e8.gif"
-            alt="Face Recognition"
-            className="faceImg"
-          />
+          <img src={FR1} alt="Face Recognition" className="faceImg" />
         </div>
       )}
 

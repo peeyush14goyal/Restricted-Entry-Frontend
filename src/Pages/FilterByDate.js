@@ -8,6 +8,7 @@ import Accordions from "../components/Accordion/Accordion";
 import { getChartValues } from "../data/API";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import "./admin.css";
+import FR1 from "./assets/FR1.gif";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -97,11 +98,7 @@ const FilterByDate = () => {
       </div>
       {!isLoaded && !dataNotFound && (
         <div className="gifImg">
-          <img
-            src="https://im7.ezgif.com/tmp/ezgif-7-6cb5bee7df00.gif"
-            alt="Face Recognition"
-            className="faceImg"
-          />
+          <img src={FR1} alt="Face Recognition" className="faceImg" />
         </div>
       )}
 
