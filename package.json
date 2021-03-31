@@ -14,7 +14,7 @@
     "bootstrap": "^4.0.0",
     "date-fns": "^2.19.0",
     "firebase": "^8.2.10",
-    "firebase-tools": "^9.6.0",
+    "firebase-tools": "^9.8.0",
     "react": "^17.0.1",
     "react-cookie": "^4.0.3",
     "react-countup": "^4.3.3",
